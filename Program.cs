@@ -11,7 +11,7 @@ namespace BikeShareSP
         static void Main(string[] args)
         {
             Console.WriteLine("=== BikeShare SP - Sistema de Gestão (Versão Alpha) ===");
-            
+
             bool emExecucao = true;
             while (emExecucao)
             {
@@ -33,10 +33,33 @@ namespace BikeShareSP
                         // TODO: Implementar Cadastro conforme [REQ-02] da UC4
                         Console.WriteLine("Funcionalidade em desenvolvimento...");
                         break;
+                    //Quando o usuario escolher a opção 3 exe. Esse bloco
                     case "3":
-                        // TODO: Implementar Lógica de Aluguel conforme [REQ-03] da UC4
-                        Console.WriteLine("Funcionalidade em desenvolvimento...");
+                        Console.WriteLine("---Realizar Aluguel---");
+                        Console.Write("Digite o nome da bicicleta");
+                        //Ler o que usuario digitou e salvar na var. "bikeBusca"
+                        string bikeBusca = Console.ReadLine();
+                        //Cria a var. para controlar se a bicicleta foi encontrada.
+                        //Comecar como "false" (não encontrada) até provar o contrario;
+                        bool encontrada = false;
+                        // Percorre a lista da bicicleta ate o final (Count)
+                        for (int i = 0; i < bicicletas.Count; i++)
+                        {
+                            //Compara o nome de cada bike da lista com a do usuario    
+                            if (bicicletas[i] == bikeBusca)
+                            {
+                                bicicletas.RemoveAt(i);
+                                Console.WriteLine("\nBicicleta alugada com sucesso!");
+                                encontrada = true;
+                                break;
+                            }
+                        }
+                        if (!encontrada)
+                        {
+                            Console.WriteLine("Erro: Bicicleta não encontrada.");
+                        }
                         break;
+
                     case "0":
                         emExecucao = false;
                         break;
